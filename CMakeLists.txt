@@ -44,8 +44,12 @@ else()
   message (FATAL_ERROR "must use conan")
 endif()
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/)
+
 find_package(cmake_platform_detection REQUIRED)
 run_cmake_platform_detection()
+# NOTE: perform platform checks before everything else
+include(cmake/PlatformChecks)
 
 find_package(cmake_build_options REQUIRED)
 setup_default_build_type(RELEASE)
@@ -88,10 +92,6 @@ if(ENABLE_COBALT)
     message(FATAL_ERROR "not supported: using system provided cobalt_starboard library")
   endif()
 endif(ENABLE_COBALT)
-
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/)
-
-include(cmake/PlatformChecks)
 
 include(cmake/CommonOptions)
 
