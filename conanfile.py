@@ -45,7 +45,7 @@ class chromium_url_conan_project(ConanFile):
         "debug=False",
         "enable_tests=False",
         "enable_sanitizers=False",
-        "enable_cobalt=True"
+        "enable_cobalt=False"
         # build
         #"*:shared=False"
     )
